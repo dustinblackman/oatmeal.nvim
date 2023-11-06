@@ -37,7 +37,7 @@ You must have Oatmeal installed on your system in order to use the plugin. See t
     config = function()
         require("oatmeal").setup({
             backend = "ollama",
-            model = "codellama:latest"
+            model = "codellama:latest",
         })
     end,
 },
