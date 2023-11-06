@@ -32,7 +32,6 @@ You must have Oatmeal installed on your system in order to use the plugin. See t
     cmd = { "Oatmeal" },
     keys = {
         { "<leader>om", mode = "n", desc = "Start Oatmeal session" },
-        { "<leader>om", mode = "v", desc = "Start Oatmeal session" },
     },
     config = function()
         require("oatmeal").setup({
