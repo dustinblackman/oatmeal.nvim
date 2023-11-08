@@ -67,6 +67,7 @@ function M.submit_changes(file_path)
 	end
 
 	local start_line = 0
+	local end_line = json["end_line"]
 	if json["start_line"] ~= 0 then
 		start_line = json["start_line"] - 1
 	end
@@ -74,7 +75,8 @@ function M.submit_changes(file_path)
 	if json["end_line"] == nil or json["end_line"] == vim.NIL then
 		vim.api.nvim_buf_set_lines(session_context.buffer_id, start_line, start_line, true, lines)
 	elseif json["accept_type"] == "append" then
-		vim.api.nvim_buf_set_lines(session_context.buffer_id, json["end_line"], json["end_line"], true, lines)
+		end_line = vim.api.nvim__buf_stats(session_context.buffer_id).current_lnum
+		vim.api.nvim_buf_set_lines(session_context.buffer_id, end_line, end_line, true, lines)
 	else
 		vim.api.nvim_buf_set_lines(session_context.buffer_id, start_line, json["end_line"], true, lines)
 	end
