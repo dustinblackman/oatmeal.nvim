@@ -17,7 +17,9 @@ Oatmeal is a terminal UI chat application that speaks with LLMs, complete with s
 
 See it in action (click to restart):
 
-![oatmeal-demo](https://github.com/dustinblackman/oatmeal/assets/5246169/4fead112-5d37-497d-b270-a806fac41a17)
+![oatmeal-demo](https://github.com/dustinblackman/oatmeal/assets/5246169/9ee5e910-4eff-4deb-8065-aeab8bfe6b00)
+
+_Note:_ This project is still quite new, and LLM's can return unexpected answers the UI isn't prepped for. There's likely a few bugs hidden somewhere.
 
 ## Install
 
