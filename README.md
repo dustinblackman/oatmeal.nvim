@@ -44,7 +44,7 @@ You must have Oatmeal installed on your system in order to use the plugin. See t
 
 ## Default Configuration
 
-All configuration variables are optional and will default to what is set in the CLI defaults.
+All configuration variables are optional and will default to what is set in the [CLI defaults](https://github.com/dustinblackman/oatmeal#usage).
 
 ```lua
 {
