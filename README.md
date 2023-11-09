@@ -2,7 +2,7 @@
 
 ![oatmeal](.github/banner.png)
 
-> Terminal UI to chat with large language models (LLM) using different model backends, and direct integration with Neovim!
+> Terminal UI to chat with large language models (LLM) using different model backends, and with a plugin for Neovim!
 
 - [Overview](#Overview)
 - [Install](#Install)
