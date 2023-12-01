@@ -35,12 +35,10 @@ You must have Oatmeal installed on your system in order to use the plugin. See t
     keys = {
         { "<leader>om", mode = "n", desc = "Start Oatmeal session" },
     },
-    config = function()
-        require("oatmeal").setup({
-            backend = "ollama",
-            model = "codellama:latest",
-        })
-    end,
+    opts = {
+        backend = "ollama",
+        model = "codellama:latest",
+    },
 },
 ```
 
@@ -54,8 +52,8 @@ All configuration variables are optional and will default to what is set in the 
     model = "",
     theme = "",
     theme_file = "",
-    openapi_url = "",
-    openapi_token = "",
+    openai_url = "",
+    openai_token = "",
     close_terminal_on_quit = true
 }
 ```
