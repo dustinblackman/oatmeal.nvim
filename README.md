@@ -42,6 +42,20 @@ You must have Oatmeal installed on your system in order to use the plugin. See t
 },
 ```
 
+### packer
+
+```lua
+use {
+    "dustinblackman/oatmeal.nvim",
+    config = function()
+        require("oatmeal").setup({
+            backend = "ollama",
+            model = "codellama:latest",
+        })
+    end
+}
+```
+
 ## Default Configuration
 
 All configuration variables are optional and will default to what is set in the [CLI defaults](https://github.com/dustinblackman/oatmeal#usage).
