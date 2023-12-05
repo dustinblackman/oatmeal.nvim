@@ -110,7 +110,7 @@ function M.start()
   table.insert(args, "--editor")
   table.insert(args, "neovim")
 
-  local flags = { "backend", "model", "theme", "theme-file", "openai-url", "openai-token" }
+  local flags = { "backend", "model", "theme", "theme-file", "ollama-url", "openai-url", "openai-token" }
   for _, key in pairs(flags) do
     local config_name = string.gsub(key, "-", "_")
     if config[config_name] ~= nil then

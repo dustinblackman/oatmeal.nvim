@@ -66,6 +66,7 @@ All configuration variables are optional and will default to what is set in the 
     model = "",
     theme = "",
     theme_file = "",
+    ollama_url = "",
     openai_url = "",
     openai_token = "",
     close_terminal_on_quit = true
