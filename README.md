@@ -7,7 +7,8 @@
 - [Overview](#Overview)
 - [Install](#Install)
   - [lazy.nvim](#lazy-nvim)
-  - [Default Configuration](#default-configuration)
+  - [packer](#packer)
+- [Default Configuration](#default-configuration)
 - [Usage](#Usage)
 - [License](#license)
 
@@ -25,6 +26,8 @@ _Note:_ This project is still quite new, and LLM's can return unexpected answers
 
 You must have Oatmeal installed on your system in order to use the plugin. See the main
 [Oatmeal](https://github.com/dustinblackman/oatmeal) repo for installation details.
+
+**Neovim `>=0.9.2` is required**
 
 ### lazy.nvim
 
