@@ -61,10 +61,15 @@ use {
 
 ## Default Configuration
 
-All configuration variables are optional and will default to what is set in the [CLI defaults](https://github.com/dustinblackman/oatmeal#usage).
+All configuration variables are optional with defaults. All CLI options will default to what is set in the [tool itself](https://github.com/dustinblackman/oatmeal#usage).
 
 ```lua
 {
+    -- Set to empty string to disable.
+    hotkey = "<leader>om",
+    close_terminal_on_quit = true
+
+    -- CLI
     backend = "",
     model = "",
     theme = "",
@@ -72,7 +77,6 @@ All configuration variables are optional and will default to what is set in the 
     ollama_url = "",
     openai_url = "",
     openai_token = "",
-    close_terminal_on_quit = true
 }
 ```
 

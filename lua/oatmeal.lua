@@ -129,6 +129,14 @@ end
 
 function M.setup(conf)
   config = conf
+
+  if conf["hotkey"] == nil then
+    conf["hotkey"] = "<leader>om"
+  end
+  if conf["hotkey"] ~= "" then
+    vim.keymap.set("n", conf["hotkey"], M.start, { silent = true, noremap = true })
+    vim.keymap.set("v", conf["hotkey"], M.start, { silent = true, noremap = true })
+  end
 end
 
 _G.oatmeal_submit_changes = M.submit_changes
@@ -136,6 +144,4 @@ _G.oatmeal_get_context = M.get_context
 _G.oatmeal_clear_context = M.clear_context
 
 vim.api.nvim_create_user_command("Oatmeal", M.start, { desc = "Start Oatmeal session", range = true })
-vim.keymap.set("n", "<leader>om", M.start, { silent = true, noremap = true })
-vim.keymap.set("v", "<leader>om", M.start, { silent = true, noremap = true })
 return M
