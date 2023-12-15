@@ -1,4 +1,6 @@
 local base64 = require("base64")
+local utils = require("utils")
+
 local M = {}
 
 local config = {}
@@ -9,20 +11,16 @@ function M.set_context()
   local end_line = nil
   local code = ""
 
-  -- Visual Mode
-  local vstart = vim.fn.getpos("'<")
-  local vend = vim.fn.getpos("'>")
-  if vstart ~= nil and vend ~= nil and vend[2] ~= 0 then
-    start_line = vstart[2]
-    end_line = vend[2]
+  if utils.mode_is_visual() then
+    local selection
+    code, selection = utils.get_visual_selection()
 
-    local select_start_line = start_line
-    if select_start_line ~= 0 then
-      select_start_line = select_start_line - 1
+    if not selection then
+      return
     end
 
-    local lines = vim.api.nvim_buf_get_lines(0, select_start_line, end_line, true)
-    code = table.concat(lines, "\n")
+    start_line = selection.start.line
+    end_line = selection["end"].line
   end
 
   session_context = {
