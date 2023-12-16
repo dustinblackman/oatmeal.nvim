@@ -11,16 +11,16 @@ function M.set_context()
   local end_line = nil
   local code = ""
 
-  if utils.mode_is_visual() then
-    local selection
-    code, selection = utils.get_visual_selection()
+  if common_utils.in_visual() then
+    local start_pos, end_pos
+    code, start_pos, end_pos = common_utils.get_visual()
 
-    if not selection then
+    if code == nil then
       return
     end
 
-    start_line = selection.start.line
-    end_line = selection["end"].line
+    start_line = start_pos
+    end_line = end_pos
   end
 
   session_context = {

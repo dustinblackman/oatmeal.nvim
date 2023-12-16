@@ -1,60 +1,43 @@
-function M.tbl_length(T)
-  local count = 0
-  for _ in pairs(T) do
-    count = count + 1
-  end
-  return count
-end
+local M = {}
 
-function M.get_visual_selection()
-  local _, csrow, cscol, cerow, cecol
-  local mode = vim.fn.mode()
-  if mode == "v" or mode == "V" or mode == "" then
-    _, csrow, cscol, _ = unpack(vim.fn.getpos("."))
-    _, cerow, cecol, _ = unpack(vim.fn.getpos("v"))
-    if mode == "V" then
-      cscol, cecol = 0, 999
-    end
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
-  else
-    _, csrow, cscol, _ = unpack(vim.fn.getpos("'<"))
-    _, cerow, cecol, _ = unpack(vim.fn.getpos("'>"))
-  end
-  if cerow < csrow then
-    csrow, cerow = cerow, csrow
-  end
-  if cecol < cscol then
-    cscol, cecol = cecol, cscol
-  end
-  local lines = vim.fn.getline(csrow, cerow)
-  local n = M.tbl_length(lines)
-  if n <= 0 then
+function M.get_visual()
+  local start_pos = vim.fn.getpos("v")
+  local end_pos = vim.fn.getpos(".")
+
+  if start_pos == nil or end_pos == nil then
     return ""
   end
-  lines[n] = string.sub(lines[n], 1, cecol)
-  lines[1] = string.sub(lines[1], cscol)
-  return table.concat(lines, "\n"),
-    {
-      start = { line = csrow, char = cscol },
-      ["end"] = { line = cerow, char = cecol },
-    }
+
+  local start_row, start_col = start_pos[2], start_pos[3]
+  local end_row, end_col = end_pos[2], end_pos[3]
+
+  if end_row < start_row then
+    start_row, end_row = end_row, start_row
+  end
+  if end_col < start_col then
+    start_col, end_col = end_col, start_col
+  end
+
+  local lines = vim.api.nvim_buf_get_text(0, start_row - 1, start_col - 1, end_row - 1, end_col, {})
+
+  return table.concat(lines, "\n"), start_row, end_row
 end
 
-function M.mode_is_visual()
-  local visual_modes = {
-    v = true,
-    vs = true,
-    V = true,
-    Vs = true,
-    nov = true,
-    noV = true,
-    niV = true,
+function M.in_visual()
+  local modes = {
     Rv = true,
     Rvc = true,
     Rvx = true,
+    V = true,
+    Vs = true,
+    niV = true,
+    noV = true,
+    nov = true,
+    v = true,
+    vs = true,
   }
-  local mode = vim.api.nvim_get_mode()
-  return visual_modes[mode.mode]
+  local current_mode = vim.api.nvim_get_mode()["mode"]
+  return modes[current_mode]
 end
 
 return M
