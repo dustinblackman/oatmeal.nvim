@@ -11,13 +11,9 @@ function M.set_context()
   local end_line = nil
   local code = ""
 
-  if common_utils.in_visual() then
+  if utils.in_visual() then
     local start_pos, end_pos
-    code, start_pos, end_pos = common_utils.get_visual()
-
-    if code == nil then
-      return
-    end
+    code, start_pos, end_pos = utils.get_visual()
 
     start_line = start_pos
     end_line = end_pos

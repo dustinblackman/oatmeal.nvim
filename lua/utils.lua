@@ -37,7 +37,7 @@ function M.in_visual()
     vs = true,
   }
   local current_mode = vim.api.nvim_get_mode()["mode"]
-  return modes[current_mode]
+  return modes[current_mode] or false
 end
 
 return M
