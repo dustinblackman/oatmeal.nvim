@@ -11,12 +11,26 @@ function M.set_context()
   local end_line = nil
   local code = ""
 
-  if utils.in_visual() then
-    local start_pos, end_pos
-    code, start_pos, end_pos = utils.get_visual()
+  -- In visual mode
+  if utils.in_visual_mode() then
+    local start_row, end_row, visual_code
+    visual_code, start_row, end_row = utils.get_visual()
+    if start_row ~= nil and end_row ~= nil then
+      code = visual_code
+      start_line = start_row
+      end_line = end_row
+    end
+  end
 
-    start_line = start_pos
-    end_line = end_pos
+  -- In command prompt coming from visual mode.
+  if end_line == nil then
+    local start_row, end_row, visual_code
+    visual_code, start_row, end_row = utils.get_previous_visual()
+    if start_row ~= nil and end_row ~= nil and start_row == start_line then
+      code = visual_code
+      start_line = start_row
+      end_line = end_row
+    end
   end
 
   session_context = {

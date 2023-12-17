@@ -23,7 +23,27 @@ function M.get_visual()
   return table.concat(lines, "\n"), start_row, end_row
 end
 
-function M.in_visual()
+function M.get_previous_visual()
+  local vstart = vim.fn.getpos("'<")
+  local vend = vim.fn.getpos("'>")
+
+  if vstart == nil or vend == nil or vend[2] == 0 then
+    return ""
+  end
+
+  local start_row = vstart[2]
+  local end_row = vend[2]
+  local select_start_line = start_row
+
+  if select_start_line ~= 0 then
+    select_start_line = select_start_line - 1
+  end
+
+  local lines = vim.api.nvim_buf_get_lines(0, select_start_line, end_row, true)
+  return table.concat(lines, "\n"), start_row, end_row
+end
+
+function M.in_visual_mode()
   local modes = {
     Rv = true,
     Rvc = true,
