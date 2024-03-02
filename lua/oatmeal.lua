@@ -33,6 +33,13 @@ function M.set_context()
     end
   end
 
+  -- If no code blocks selected, send the entire file.
+  if code == "" then
+    code = table.concat(vim.api.nvim_buf_get_lines(0, 0, -1, false), "\n")
+    start_line = 0
+    end_line = nil
+  end
+
   session_context = {
     file_path = vim.fn.expand("%:p"),
     language = vim.bo.filetype,
