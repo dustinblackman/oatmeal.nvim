@@ -1,5 +1,5 @@
-local base64 = require("base64")
-local utils = require("utils")
+local base64 = require("oatmeal.base64")
+local utils = require("oatmeal.utils")
 
 local M = {}
 
