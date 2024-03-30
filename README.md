@@ -75,8 +75,8 @@ All configuration variables are optional with defaults. All CLI options will def
     theme = "",
     theme_file = "",
     ollama_url = "",
-    openai_url = "",
-    openai_token = "",
+    open_ai_url = "",
+    open_ai_token = "",
 }
 ```
 

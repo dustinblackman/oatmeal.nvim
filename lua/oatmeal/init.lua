@@ -110,8 +110,8 @@ function M.start()
     "editor",
     "model",
     "ollama-url",
-    "openai-token",
-    "openai-url",
+    "open-ai-token",
+    "open-ai-url",
     "theme",
     "theme-file",
   }
